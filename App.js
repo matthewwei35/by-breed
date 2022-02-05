@@ -1,20 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, FlatList, StyleSheet } from 'react-native';
+import { cats, dogs } from './breeds';
+import Item from './Item';
+
+const DATA_CATS = cats;
+const DATA_DOGS = dogs;
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        ref={(list) => flatListRef = list}
+        data={DATA_CATS}
+        renderItem={({ item, index }) => {
+          return <Item title={`${index} ${item.breed}`} data={item} />
+        }}
+        keyExtractor={item => {
+          return item.breed
+        }}
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    marginTop: StatusBar.currentHeight || 0,
+  }
 });
