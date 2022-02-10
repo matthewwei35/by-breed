@@ -1,5 +1,7 @@
 import { View, StyleSheet, Text } from 'react-native';
 
+const star = "⭐️"
+
 const Item = ({ title, data }) => {
 
   const keys = Object.keys(data)
@@ -11,9 +13,10 @@ const Item = ({ title, data }) => {
         return (
           <View style={styles.details}>
             <Text>{key}: {data[key]}</Text>
-            <View style={styles.parent}>
+            <Text>{star.repeat(data[key])}</Text>
+            {/* <View style={styles.parent}>
               <View style={[styles.child, {width: data[key] / 5 * 100}]}></View>
-            </View>
+            </View> */}
           </View>
         )
       })}
@@ -37,14 +40,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   parent: {
-    backgroundColor: 'grey',
-    width: 100,
-    alignSelf: 'center'
+    // backgroundColor: 'grey',
+    // width: 100,
+    // alignSelf: 'center'
   },
   child: {
-    backgroundColor: '#cccccc',
-    height: 10,
-    width: 100
+    // backgroundColor: '#cccccc',
+    // height: 10,
+    // width: 100
   }
 });
 
