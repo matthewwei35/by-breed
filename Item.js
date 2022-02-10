@@ -1,10 +1,16 @@
 import { View, StyleSheet, Text } from 'react-native';
 
-const Item = ({ title, data }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+const Item = ({ title, data }) => {
+
+  const keys = Object.keys(data)
+
+  return (
+    <View style={styles.item}>
+      <Text style={styles.title}>{title}</Text>
+      {keys.map((key) => <Text>{key}: {data[key]}</Text>)}
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   item: {

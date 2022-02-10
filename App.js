@@ -12,7 +12,8 @@ export default function App() {
       <FlatList
         ref={(list) => flatListRef = list}
         data={DATA_CATS}
-        renderItem={({ item, index }) => {
+        renderItem={({ item, index, data }) => {
+          console.log(item)
           return <Item title={`${index} ${item.breed}`} data={item} />
         }}
         keyExtractor={item => {
