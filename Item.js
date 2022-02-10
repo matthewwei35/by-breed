@@ -7,7 +7,16 @@ const Item = ({ title, data }) => {
   return (
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
-      {keys.map((key) => <Text>{key}: {data[key]}</Text>)}
+      {keys.filter((name) => name != 'breed').map((key) => {
+        return (
+          <View style={styles.details}>
+            <Text>{key}: {data[key]}</Text>
+            <View style={styles.parent}>
+              <View style={[styles.child, {width: data[key] / 5 * 100}]}></View>
+            </View>
+          </View>
+        )
+      })}
     </View>
   )
 }
@@ -23,6 +32,20 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
   },
+  details: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  parent: {
+    backgroundColor: 'blue',
+    width: 100,
+    alignSelf: 'center'
+  },
+  child: {
+    backgroundColor: 'grey',
+    height: 10,
+    width: 100
+  }
 });
 
 export default Item;
