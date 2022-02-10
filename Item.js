@@ -37,12 +37,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   parent: {
-    backgroundColor: 'blue',
+    backgroundColor: 'grey',
     width: 100,
     alignSelf: 'center'
   },
   child: {
-    backgroundColor: 'grey',
+    backgroundColor: '#cccccc',
     height: 10,
     width: 100
   }
