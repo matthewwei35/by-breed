@@ -1,26 +1,18 @@
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, TouchableHighlight, Touchable } from 'react-native';
 
-const star = "⭐️"
+const Item = ({ title, data, navigation }) => {
 
-const Item = ({ title, data }) => {
-
-  const keys = Object.keys(data)
+  // const keys = Object.keys(data)
 
   return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-      {keys.filter((name) => name != 'breed').map((key) => {
-        return (
-          <View style={styles.details}>
-            <Text>{key}: {data[key]}</Text>
-            <Text>{star.repeat(data[key])}</Text>
-            {/* <View style={styles.parent}>
-              <View style={[styles.child, {width: data[key] / 5 * 100}]}></View>
-            </View> */}
-          </View>
-        )
-      })}
-    </View>
+    <TouchableHighlight
+      style={styles.item}
+      onPress={() => navigation.navigate('Details', data)}
+    >
+      <View>
+        <Text style={styles.title}>{title}</Text>
+      </View>
+    </TouchableHighlight>
   )
 }
 
@@ -38,16 +30,6 @@ const styles = StyleSheet.create({
   details: {
     flexDirection: 'row',
     justifyContent: 'space-between'
-  },
-  parent: {
-    // backgroundColor: 'grey',
-    // width: 100,
-    // alignSelf: 'center'
-  },
-  child: {
-    // backgroundColor: '#cccccc',
-    // height: 10,
-    // width: 100
   }
 });
 

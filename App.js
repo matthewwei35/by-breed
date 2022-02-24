@@ -1,25 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, FlatList, StyleSheet } from 'react-native';
-import { cats, dogs } from './breeds';
-import Item from './Item';
+import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './HomeScreen';
+import DetailsScreen from './DetailsScreen';
 
-const DATA_CATS = cats;
-const DATA_DOGS = dogs;
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        ref={(list) => flatListRef = list}
-        data={DATA_CATS}
-        renderItem={({ item, index, data }) => {
-          // console.log(item)
-          return <Item title={`${index} ${item.breed}`} data={item} />
-        }}
-        keyExtractor={item => {
-          return item.breed
-        }}
-      />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Details" component={DetailsScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaView>
   );
 }
