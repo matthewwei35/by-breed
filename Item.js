@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, TouchableHighlight, Touchable } from 'react-native';
+import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
 
 const Item = ({ title, data, navigation }) => {
 
